@@ -1,6 +1,6 @@
 /**
  * 
- * A resposta certa sempre será a posiçao [1] do array!
+ * A resposta certa sempre será a posição [1] do array!
  */
 
 var Questoes = [

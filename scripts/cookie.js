@@ -1,15 +1,15 @@
 /*
     Exemplo:
-    - Cria o cookie 'CookieTeste' com o valor 'HellowWorld!' que irá expirar quando o browser for fechado.
-    GerarCookie('CookieTeste', 'HellowWorld!', 0);
+    - Cria o cookie 'CookieTeste' com o valor 'HelloWorld!' que irá expirar quando o browser for fechado.
+    GerarCookie('CookieTeste', 'HelloWorld!', 0);
     - Lê o conteúdo armazenado no cookie.
     LerCookie('CookieTeste');
-    - Exclúi o cookie.
+    - Exclui o cookie.
     ExcluirCookie('CookieTeste');
 */
  
 // Função para criar o cookie.
-// Para que o cookie seja destruído quando o brawser for fechado, basta passar 0 no parametro lngDias.
+// Para que o cookie seja destruído quando o browser for fechado, basta passar 0 no parâmetro lngDias.
 function GerarCookie(strCookie, strValor, lngDias)
 {
     var dtmData = new Date();

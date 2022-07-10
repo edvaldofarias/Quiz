@@ -1,4 +1,4 @@
-/* global Questoes */
+/* global Questões */
 
 $(document).ready(function () {
     Load.Indice();
