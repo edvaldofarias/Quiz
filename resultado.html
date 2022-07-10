@@ -1,70 +1,70 @@
 <!DOCTYPE html>
 <html>
 
-    <head>
-        <title>Resultado</title>
+<head>
+    <title>Resultado</title>
 
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
 
-        <!-- Scripts -->
-        <script src="scripts/jquery.min.js" type="text/javascript"></script>
-        <script src="Data/Questoes.js" type="text/javascript"></script>
-        <script src="scripts/resultado/script.js" type="text/javascript"></script>
-        <!--\ Scripts -->
+    <!-- Scripts -->
+    <script src="scripts/jquery.min.js" type="text/javascript"></script>
+    <script src="Data/Questoes.js" type="text/javascript"></script>
+    <script src="scripts/resultado/script.js" type="text/javascript"></script>
+    <!--\ Scripts -->
 
-        <!-- Bootstrap -->
-        <link href="bootstrap/bootstrap.css" rel="stylesheet" type="text/css" />
-        <script src="bootstrap/bootstrap.min.js" type="text/javascript"></script>
-        <!-- /Bootstrap -->
-    </head>
+    <!-- Bootstrap -->
+    <link href="bootstrap/bootstrap.css" rel="stylesheet" type="text/css" />
+    <script src="bootstrap/bootstrap.min.js" type="text/javascript"></script>
+    <!-- /Bootstrap -->
+</head>
 
-    <body style="background: #fafafa;">
-        <div class="container">
-            <header class="text-center">
-                	<h1 style="font-weight: bold;">
-					Resultado
-				</h1>
-                	<h2 style="font-weight: bold;">
-					Matéria: 
-					<span id="materia" style="color: #199BBE"></span>
-				</h2>
-            </header>
-            <div class="text-center">
-                <br>
-                <br>
+<body style="background: #fafafa;">
+    <div class="container">
+        <header class="text-center">
+            <h1 style="font-weight: bold;">
+                Resultado
+            </h1>
+            <h2 style="font-weight: bold;">
+                Matéria:
+                <span id="materia" style="color: #199BBE"></span>
+            </h2>
+        </header>
+        <div class="text-center">
+            <br>
+            <br>
 
-                <p>Você acertou <code id="porcetagem"></code> das questões feitas
-                </p>
-                <table class="table text-justify">
-                    <tbody style="font-weight: bold;">
-                        <tr>
-                            <td>Quantidade de questões da matéria:</td>
-                            <td id="questaoMateria"></td>
-                        </tr>
-                        <tr>
-                            <td>Quantidade de questões feitas:</td>
-                            <td id="questaoFeita"></td>
-                        </tr>
-                        <tr>
-                            <td>Questões erradas e/ou puladas:</td>
-                            <td id="questaoError"></td>
-                        </tr>
-                        <tr>
-                            <td>Questões corretas:</td>
-                            <td id="questaoCerta"></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <a href="index.html">
-                    <button class="btn" style="background-color: #14738C; color: white;">
-                        <img src="img/pular.png" style="width: 15%;">Realizar um novo teste
-                    </button>
-                </a>
-            </div>
+            <p>Você acertou <code id="porcetagem"></code> das questões feitas
+            </p>
+            <table class="table text-justify">
+                <tbody style="font-weight: bold;">
+                    <tr>
+                        <td>Quantidade de questões da matéria:</td>
+                        <td id="questaoMateria"></td>
+                    </tr>
+                    <tr>
+                        <td>Quantidade de questões feitas:</td>
+                        <td id="questaoFeita"></td>
+                    </tr>
+                    <tr>
+                        <td>Questões erradas e/ou puladas:</td>
+                        <td id="questaoError"></td>
+                    </tr>
+                    <tr>
+                        <td>Questões corretas:</td>
+                        <td id="questaoCerta"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <a href="index.html">
+                <button class="btn" style="background-color: #14738C; color: white;">
+                    <img src="img/pular.png" style="width: 15%;">Realizar um novo teste
+                </button>
+            </a>
         </div>
-    </body>
+    </div>
+</body>
 
 </html>
