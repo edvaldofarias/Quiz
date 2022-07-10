@@ -1,0 +1,14 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,100,900italic);
+
+.container{
+    font-family: 'Roboto', sans-serif;
+	color: #14738C;
+}
+
+.container hr {
+	border-top: 1px solid #199BBE; 
+}
+
+.sub-title{
+	color: #14738C;
+}
