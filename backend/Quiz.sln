@@ -7,6 +7,26 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{827E0CD3-B72
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quiz.WebApi", "src\Quiz.WebApi\Quiz.WebApi.csproj", "{1F601191-BD27-4BED-A243-1DC763F64FD5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Presentation", "1 - Presentation", "{69C0E1E7-F3C8-4E3B-BED7-96DC60B76E6B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Application", "2 - Application", "{C1934328-13A2-4A7B-B96A-9DECF5982C2A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Domain", "3 - Domain", "{6A7DE6B4-4391-468F-9722-4D6EEC8AAC9B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infrastructure", "4 - Infrastructure", "{7D4DEF50-0D89-4FB4-8A25-7727325CE8BE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{2FB38E42-FB65-475E-875D-FEA7A19B00FF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{95B11203-92EA-4B92-9A4D-1AAF3F6DFE79}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+		global.json = global.json
+		nuget.config = nuget.config
+		.gitignore = .gitignore
+		Directory.Build.props = Directory.Build.props
+		Directory.Build.targets = Directory.Build.targets
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,6 +54,10 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{1F601191-BD27-4BED-A243-1DC763F64FD5} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
+		{69C0E1E7-F3C8-4E3B-BED7-96DC60B76E6B} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
+		{1F601191-BD27-4BED-A243-1DC763F64FD5} = {69C0E1E7-F3C8-4E3B-BED7-96DC60B76E6B}
+		{C1934328-13A2-4A7B-B96A-9DECF5982C2A} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
+		{6A7DE6B4-4391-468F-9722-4D6EEC8AAC9B} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
+		{7D4DEF50-0D89-4FB4-8A25-7727325CE8BE} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 	EndGlobalSection
 EndGlobal
