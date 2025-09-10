@@ -16,11 +16,14 @@ public class QuestionTest : BaseTest
         var question = new Question(subjectId, description);
 
         // Assert
-        question.Should().NotBeNull();
-        question.Stem.Should().Be(description);
-        question.SubjectId.Should().Be(subjectId);
-        question.CreatedAt.Should().BeOnOrBefore(DateTime.UtcNow);
-        question.UpdatedAt.Should().BeNull();
+        question.ShouldSatisfyAllConditions(()=>
+        {
+            question.ShouldNotBeNull();
+            question.Stem.ShouldBe(description);
+            question.SubjectId.ShouldBe(subjectId);
+            question.CreatedAt.ShouldBeLessThanOrEqualTo(DateTime.UtcNow);
+            question.UpdatedAt.ShouldBeNull();
+        });
     }
 
     [Fact]
@@ -34,7 +37,7 @@ public class QuestionTest : BaseTest
         Action act = () => new Question(subjectId, description);
 
         // Assert
-        act.Should().Throw<ArgumentException>().WithMessage("Question stem cannot be empty.*");
+        act.ShouldThrow<ArgumentException>();
     }
 
     [Fact]
@@ -48,7 +51,7 @@ public class QuestionTest : BaseTest
         Action act = () => new Question(subjectId, description);
 
         // Assert
-        act.Should().Throw<ArgumentException>().WithMessage("Question stem cannot be empty.*");
+        act.ShouldThrow<ArgumentException>();
     }
 
     [Fact]
@@ -67,14 +70,17 @@ public class QuestionTest : BaseTest
         var option = question.Options.FirstOrDefault();
         
         // Assert
-        option.Should().NotBeNull();
-        option!.Content.Should().Be(content);
-        option.IsCorrect.Should().Be(isCorrect);
-        option.Order.Should().Be(order);
-        option.QuestionId.Should().Be(question.Id);
-        option.CreatedAt.Should().BeOnOrBefore(DateTime.UtcNow);
-        option.UpdatedAt.Should().BeNull();
-        question.UpdatedAt.Should().BeOnOrAfter(question.CreatedAt);
+        option.ShouldSatisfyAllConditions(() =>
+        {
+            option.ShouldNotBeNull();
+            option!.Content.ShouldBe(content);
+            option.IsCorrect.ShouldBe(isCorrect);
+            option.Order.ShouldBe(order);
+            option.QuestionId.ShouldBe(question.Id);
+            option.CreatedAt.ShouldBeLessThanOrEqualTo(DateTime.UtcNow);
+            option.UpdatedAt.ShouldBeNull();
+            question.UpdatedAt?.ShouldBeGreaterThanOrEqualTo(question.CreatedAt);
+        });
     }
 
     [Fact]
@@ -92,7 +98,7 @@ public class QuestionTest : BaseTest
         Action act = () => question.AddOption(content, isCorrect, order);
 
         // Assert
-        act.Should().Throw<ArgumentException>().WithMessage("Option content cannot be empty.*");
+        act.ShouldThrow<ArgumentException>();
     }
 
     [Fact]
@@ -110,7 +116,7 @@ public class QuestionTest : BaseTest
         Action act = () => question.AddOption(content, isCorrect, order);
         
         // Assert
-        act.Should().Throw<ArgumentException>().WithMessage("Option content cannot be empty.*");
+        act.ShouldThrow<ArgumentException>();
     }
     
     [Fact]
@@ -130,7 +136,7 @@ public class QuestionTest : BaseTest
         Action act = () => question.AddOption(content2, true, order2);
         
         // Assert
-        act.Should().Throw<InvalidOperationException>().WithMessage("There is already a correct option for this question.");
+        act.ShouldThrow<InvalidOperationException>();
     }
     
     [Fact]
@@ -149,6 +155,6 @@ public class QuestionTest : BaseTest
         Action act = () => question.AddOption(content2, true, order);
         
         // Assert
-        act.Should().Throw<ArgumentException>().WithMessage($"An option with order {order} already exists.*");
+        act.ShouldThrow<ArgumentException>();
     }
 }

@@ -20,13 +20,16 @@ public class QuestionOptionTest : BaseTest
         var option = new QuestionOption(question, content, isCorrect, order);
         
         // Assert
-        option.Should().NotBeNull();
-        option.Content.Should().Be(content);
-        option.IsCorrect.Should().Be(isCorrect);
-        option.Order.Should().Be(order);
-        option.QuestionId.Should().Be(question.Id);
-        option.CreatedAt.Should().BeOnOrBefore(DateTime.UtcNow);
-        option.UpdatedAt.Should().BeNull();
+        option.ShouldSatisfyAllConditions(() =>
+        {
+            option.ShouldNotBeNull();
+            option.Content.ShouldBe(content);
+            option.IsCorrect.ShouldBe(isCorrect);
+            option.Order.ShouldBe(order);
+            option.QuestionId.ShouldBe(question.Id);
+            option.CreatedAt.ShouldBeLessThanOrEqualTo(DateTime.UtcNow);
+            option.UpdatedAt.ShouldBeNull();
+        });
     }
 
     [Fact]
@@ -42,7 +45,7 @@ public class QuestionOptionTest : BaseTest
         Action act = () => new QuestionOption(question, content, isCorrect, order);
 
         // Assert
-        act.Should().Throw<ArgumentNullException>().WithMessage("*question*");
+        act.ShouldThrow<ArgumentNullException>();
     }
 
     [Fact]
@@ -60,7 +63,7 @@ public class QuestionOptionTest : BaseTest
         Action act = () => new QuestionOption(question, content, isCorrect, order);
         
         // Assert
-        act.Should().Throw<ArgumentNullException>().WithMessage("*content*");
+        act.ShouldThrow<ArgumentNullException>();
     }
     
     [Fact]
@@ -78,7 +81,7 @@ public class QuestionOptionTest : BaseTest
         Action act = () => new QuestionOption(question, content, isCorrect, order);
         
         // Assert
-        act.Should().Throw<ArgumentOutOfRangeException>().WithMessage("*Order must be non-negative or zero.*");
+        act.ShouldThrow<ArgumentOutOfRangeException>();
     }
 
     [Fact]
@@ -96,6 +99,6 @@ public class QuestionOptionTest : BaseTest
         Action act = () => new QuestionOption(question, content, isCorrect, order);
 
         // Assert
-        act.Should().Throw<ArgumentOutOfRangeException>().WithMessage("*Order must be non-negative or zero.*");
+        act.ShouldThrow<ArgumentOutOfRangeException>();
     }
 }

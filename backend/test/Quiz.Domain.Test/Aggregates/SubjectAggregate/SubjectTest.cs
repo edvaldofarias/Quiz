@@ -9,21 +9,21 @@ public class SubjectTest : BaseTest
     public void Subject_Name_Is_Null_Throws_ArgumentNullException()
     {
         // Arrange, Act & Assert
-        Assert.Throws<ArgumentException>(() => new Subject(null!));
+        Should.Throw<ArgumentException>(() => new Subject(null!));
     }
 
     [Fact]
     public void Subject_Name_Is_Empty_Throws_ArgumentException()
     {
         // Arrange, Act & Assert
-        Assert.Throws<ArgumentException>(() => new Subject(string.Empty));
+        Should.Throw<ArgumentException>(() => new Subject(string.Empty));
     }
 
     [Fact]
     public void Subject_Name_Is_Whitespace_Throws_ArgumentException()
     {
         // Arrange, Act & Assert
-        Assert.Throws<ArgumentException>(() => new Subject("   "));
+        Should.Throw<ArgumentException>(() => new Subject("   "));
     }
 
     [Fact]
@@ -37,10 +37,13 @@ public class SubjectTest : BaseTest
         var subject = new Subject(name);
 
         // Assert
-        subject.Should().NotBeNull();
-        subject.Name.Should().Be(name);
-        subject.Initial.Should().Be(expectedInitial);
-        subject.CreatedAt.Should().BeOnOrBefore(DateTime.UtcNow);
-        subject.UpdatedAt.Should().BeNull();
+        subject.ShouldSatisfyAllConditions(() =>
+        {
+            subject.ShouldNotBeNull();
+            subject.Name.ShouldBe(name);
+            subject.Initial.ShouldBe(expectedInitial);
+            subject.CreatedAt.ShouldBeLessThanOrEqualTo(DateTime.UtcNow);
+            subject.UpdatedAt.ShouldBeNull();
+        });
     }
 }
