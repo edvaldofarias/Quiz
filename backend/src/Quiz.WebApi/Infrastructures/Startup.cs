@@ -1,3 +1,4 @@
+using Quiz.Infrastructure.DependencyInjection;
 using Quiz.WebApi.Infrastructures.Pipeline.Swagger;
 using Quiz.WebApi.Infrastructures.Services.Authentication;
 using Quiz.WebApi.Infrastructures.Services.Cors;
@@ -16,6 +17,10 @@ public static class Startup
         services.AddFirebaseAuthentication(configuration);
         services.AddSwagger();
         services.AddCorsService(environment);
+
+        services
+            .AddInfrastructure(configuration)
+            .AddUseCaseServices();
     }
 
     internal static void UseStartup(this WebApplication app, IConfiguration configuration)

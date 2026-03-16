@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Quiz.Application.UseCases.Subjects.GetSubjectInitials;
+using Quiz.Application.UseCases.Subjects.GetSubjectNamesByInitials;
 
 namespace Quiz.WebApi.Controllers;
 
@@ -8,27 +10,23 @@ public class SubjectController : MainController
     [HttpGet]
     [Route("initials")]
     [AllowAnonymous]
-    public IActionResult GetSubjectInitials()
+    public async Task<IActionResult> GetSubjectInitials(
+        [FromServices] GetSubjectInitialsUseCase useCase, CancellationToken cancellationToken)
     {
-        var initials = new[] { "M", "S", "H", "G", "E" }; 
-        return Ok(new { Initials = initials });
+        var initials = await useCase.HandleAsync(cancellationToken);
+        return Ok(new {Initials = initials});
     }
-    
+
     [HttpGet]
     [Route("names")]
     [AllowAnonymous]
-    public IActionResult GetSubjectNamesByInitials(string initial)
+    public async Task<IActionResult> GetSubjectNamesByInitials(
+        [FromQuery] string initial,
+        [FromServices] GetSubjectNamesByInitialsUseCase useCase,
+        CancellationToken cancellationToken)
     {
-        var names = initial.ToUpper() switch
-        {
-            "M" => new[] { "Mathematics", "Music", "Marketing" },
-            "S" => new[] { "Science", "Sociology", "Statistics" },
-            "H" => new[] { "History", "Health", "Humanities" },
-            "G" => new[] { "Geography", "Geology", "Genetics" },
-            "E" => new[] { "English", "Economics", "Engineering" },
-            _ => Array.Empty<string>()
-        };
-        return Ok(new { Names = names });
+        var names = await useCase.HandleAsync(initial, cancellationToken);
+        return Ok(new {Names = names});
     }
 
     [HttpGet]
@@ -36,6 +34,6 @@ public class SubjectController : MainController
     [Authorize]
     public IActionResult Status()
     {
-        return Ok(new { Message = "You are authorized!" });
+        return Ok(new {Message = "You are authorized!"});
     }
 }
